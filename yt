@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#
+#contoh
+#./yt.sh https://www.youtube.com/watch?v=YQHsXMglC9A "Adele - Hello.mp3"
+
+URLY="$1"
+FILE="$2"
+VIDEO=`youtube-dl $URLY -o '%(id)s.%(ext)s' | grep 'Merging formats into' | cut -d"\"" -f2`
+ffmpeg -i "$VIDEO" "$FILE"
