@@ -30,7 +30,6 @@ su -c "dnf install ctags"
 su -c "apt-get install ctags"
 ```
 
-
 ## Multimedia
 Motong video ntah pe lagu
 ```
@@ -39,7 +38,12 @@ ffmpeg -strict -2 -ss 00:46:30 -t 00:06:23  -i 'VIDEO.MP4' 'HASIL.MP4'
 00:46:30 : waktu mulaina
 00:06:23 : piga detik/menit makana i potong video/lagu e.
 
-
+**Convert Video Sekaligus**
+aminna gia lit spasina la masalah
+```
+IFS=$'\n'
+for i in `ls *.DAT`; do ffmpeg -i "$i"  -ar 22050 -b 2048k "$i.mp4" ; done
+```
 ## sed
 
 **Perintah**
@@ -99,12 +103,5 @@ cd /home/karo/radio
 fi
 
 ```
-
-
-
-
-
-
-
 -
 *makaro*
