@@ -21,7 +21,7 @@ if [[ ! -f "$IPLOG" ]]; then
     touch "$IPLOG"
 fi
 
-PUBLIC_IP_SEKARANG=$(curl -s https://canihazip.cos/s)
+PUBLIC_IP_SEKARANG=$(curl -s https://canihazip.com/s)
 
 if [ -z $PUBLIC_IP_SEKARANG ]; then
     PUBLIC_IP_SEKARANG=$(curl -s ifconfig.me/ip)
