@@ -22,6 +22,8 @@ alias mv='mv -i'
 export HISTCONTROL=ignoredups:erasedups
 shopt -s histappend
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
+# Log perintah
+PROMPT_COMMAND='{ msg=$(history 1 | { read x y; echo $y; });logger "[euid=$(whoami)]":$(who am i):[`pwd`]"$msg"; }'
 
 # bedaken konek via SSH ras lokal
 if [ -n "$SSH_CLIENT" ]; then
