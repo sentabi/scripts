@@ -28,8 +28,6 @@ PROMPT_COMMAND='{ msg=$(history 1 | { read x y; echo $y; });logger "[euid=$(whoa
 # bedaken konek via SSH ras lokal
 if [ -n "$SSH_CLIENT" ]; then
     PS1="\[\e[1;30m\][\[\e[1;33m\]\u@\H\[\e[1;30m\]\[\e[0;32m\]\[\e[1;30m\]] \[\e[1;37m\]\w\[\e[0;37m\] \n\$ "
-else
-    PS1="\[\e[1;30m\][\[\e[1;31m\]\u@\H\[\e[1;30m\]\[\e[0;32m\]\[\e[1;30m\]] \[\e[1;37m\]\w\[\e[0;37m\] \n\$ "
 fi
 
 alias passna='pwgen -s -B -y -a 20 1'
@@ -41,3 +39,9 @@ alias gitdiff='git diff --name-only'
 alias wget0='wget -O /dev/null'
 alias xclip='xclip -selection c'
 alias gitcommit='git commit -S -m'
+alias gituntracked='git ls-files . --exclude-standard --others'
+
+# Download git git-prompt.sh
+# wget https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh -O ~/.git-prompt.sh
+source ~/.git-prompt.sh
+PS1='\n\[\033[0;32m\]\u@\h \[\033[1;33m\]\w \[\033[0m\]$(__git_ps1 "(%s)")\n> '
