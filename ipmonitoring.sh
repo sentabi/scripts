@@ -21,7 +21,7 @@ if [[ ! -f "$IPLOG" ]]; then
     touch "$IPLOG"
 fi
 
-PUBLIC_IP_SEKARANG=$(curl -s https://canihazip.com/s)
+PUBLIC_IP_SEKARANG=$(curl -s https://canihazip.cos/s)
 
 if [ -z $PUBLIC_IP_SEKARANG ]; then
     PUBLIC_IP_SEKARANG=$(curl -s ifconfig.me/ip)
@@ -40,6 +40,6 @@ GETIPLAMA=$(cat "$IPLAMA")
 if [ "$PUBLIC_IP_SEKARANG" != "$GETIPLAMA" ]; then
     echo "$PUBLIC_IP_SEKARANG" > "$IPLAMA"
     echo "$TANGGAL" "IPLAMA:$GETIPLAMA" "IPBARU:$PUBLIC_IP_SEKARANG" >> "$IPLOG"
-	export DISPLAY=:0
-	/usr/bin/notify-send 'IP BERUBAH !!' "$PUBLIC_IP_SEKARANG"
+    export DISPLAY=:0
+    /usr/bin/notify-send 'IP BERUBAH !!' "$PUBLIC_IP_SEKARANG"
 fi
